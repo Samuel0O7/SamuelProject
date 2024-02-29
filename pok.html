@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+     <title>Countdown Timer with Giweaway</title>
+     <style>
+        body{
+            font-family: 'Segoe UI', 'Segoe UI', Tahoma, 
+            Geneva, Verdana, sans-serif;
+            background-color: #100303;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to left, rgb(255, 0, 17),#1c011c)
+        }
+img{
+    width: 400px;
+    height: 200vh;
+}
+        #countdown-box{
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #countdown{
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        #giveaway-image{
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1{
+            color: #333;
+        }
+        p{
+            color: #555;
+            max-width: 600px;
+            text-align: center;
+            height: 40vh;
+        }
+     </style>
+    </head>
+    <body>
+        <div id="countdown-box">
+            <h1>Exclusive Giveaway Countdown</h1>
+        </div>
+        <div id="countdown"></div>
+        <img src="giveaway.webp">
+        <p>Don't miss the Chance of a Lifetime to Win Yourself A Car</p>
+        <script>
+            // Set the target date to start the countdown
+            const startDate= new Date();
+            // Set the timer duration in milliseconds (10 days)
+            const timerDuration= 10 * 24 * 60 * 60 * 1000;
+
+            function updateCountdown()
+            {
+                const currentDate= new Date();
+                const timeDifference= startDate.getTime()+ timerDuration-
+                currentDate.getTime();
+
+                // Calculate days, hours, minutes, and seconds
+                const days= Math.floor(timeDifference / (24 * 60 *
+                60 * 1000));
+                const hours= Math.floor((timeDifference % (24 * 60 *
+                60 * 1000)) / (60 * 60 * 1000));
+                const minutes= Math.floor((timeDifference % (60 *60 *
+                1000)) / (60 * 1000));
+                const seconds= Math.floor((timeDifference % (60 * 
+                1000)) / 1000);
+                // Display the countdown
+                document.getElementById('countdown').innerHTML= 
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+
+            // Initial update
+            updateCountdown();
+
+            // Update the countdown every second
+            setInterval(updateCountdown, 1000);
+            
+        </script>
+    </body>
+
+</html>
